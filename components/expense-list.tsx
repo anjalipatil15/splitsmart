@@ -48,7 +48,7 @@ export function ExpenseList({ expenses, people }: ExpenseListProps) {
                 <div className="text-sm text-muted-foreground">
                   {expense.payers.length === 1 ? (
                     <p>
-                      {getPersonName(expense.payers[0].payerId)} paid ${expense.amount.toFixed(2)}
+                      {getPersonName(expense.payers[0].payerId)} paid Rs.{expense.amount.toFixed(2)}
                     </p>
                   ) : (
                     <div>
@@ -56,7 +56,7 @@ export function ExpenseList({ expenses, people }: ExpenseListProps) {
                       <ul className="list-disc pl-5 mt-1">
                         {expense.payers.map((payer) => (
                           <li key={payer.payerId}>
-                            {getPersonName(payer.payerId)}: ${payer.amount.toFixed(2)}
+                            {getPersonName(payer.payerId)}: Rs.{payer.amount.toFixed(2)}
                           </li>
                         ))}
                       </ul>

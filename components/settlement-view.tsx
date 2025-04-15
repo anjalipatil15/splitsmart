@@ -34,7 +34,7 @@ export function SettlementView({ settlements }: SettlementViewProps) {
                 <ArrowRight className="h-4 w-4" />
                 <span className="font-medium">{settlement.to}</span>
               </div>
-              <div className="font-medium">${settlement.amount.toFixed(2)}</div>
+              <div className="font-medium">Rs.{settlement.amount.toFixed(2)}</div>
             </div>
           ))}
         </div>

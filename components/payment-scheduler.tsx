@@ -32,12 +32,12 @@ export function PaymentScheduler({ settlements }: PaymentSchedulerProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Payment Scheduler (Job Sequencing Algorithm)</CardTitle>
+        <CardTitle>Payment Scheduler</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            This tool uses a Job Sequencing algorithm to create an optimal payment schedule based on payment amounts and
+            Create a payment schedule based on payment amounts and
             deadlines.
           </p>
 
@@ -95,7 +95,7 @@ export function PaymentScheduler({ settlements }: PaymentSchedulerProps) {
                   <li key={index} className="border rounded-md p-3">
                     <div className="flex justify-between items-center mb-1">
                       <span className="font-medium">Due: {formatDate(payment.dueDate)}</span>
-                      <span className="font-bold">${payment.amount.toFixed(2)}</span>
+                      <span className="font-bold">Rs.{payment.amount.toFixed(2)}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <span>{payment.from}</span>

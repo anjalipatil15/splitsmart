@@ -129,8 +129,8 @@ export function ExpenseForm({ people, onAddExpense, onAddPerson }: ExpenseFormPr
             <Input
               id="amount"
               type="number"
-              min="0.01"
-              step="0.01"
+              min="0.00"
+              step="0.00"
               placeholder="0.00"
               value={totalAmount}
               onChange={(e) => setTotalAmount(e.target.value)}
@@ -197,7 +197,7 @@ export function ExpenseForm({ people, onAddExpense, onAddPerson }: ExpenseFormPr
               {Number(totalAmount) > 0 && (
                 <div className="text-sm">
                   {remainingAmount > 0 ? (
-                    <p className="text-amber-500">Remaining to allocate: ${remainingAmount.toFixed(2)}</p>
+                    <p className="text-amber-500">Remaining to allocate: Rs.{remainingAmount.toFixed(2)}</p>
                   ) : (
                     <p className="text-green-500">All amount allocated</p>
                   )}

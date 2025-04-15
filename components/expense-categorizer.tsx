@@ -31,13 +31,12 @@ export function ExpenseCategorizer({ expenses }: ExpenseCategorizerProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Expense Categorizer (K-means Clustering)</CardTitle>
+        <CardTitle>Expense Categorizer</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            This tool uses a K-means clustering algorithm to automatically categorize your expenses based on amount
-            patterns.
+            Categorize your expenses based on amount patterns.
           </p>
 
           <div className="space-y-2">
@@ -50,7 +49,6 @@ export function ExpenseCategorizer({ expenses }: ExpenseCategorizerProps) {
                 <option value="2">2 categories</option>
                 <option value="3">3 categories</option>
                 <option value="4">4 categories</option>
-                <option value="5">5 categories</option>
               </select>
               <Button onClick={handleCategorize}>Categorize</Button>
             </div>
@@ -86,13 +84,13 @@ export function ExpenseCategorizer({ expenses }: ExpenseCategorizerProps) {
                   <div key={index} className="border rounded-md p-3">
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="font-medium">{category.name}</h3>
-                      <span className="font-bold">${category.totalAmount.toFixed(2)}</span>
+                      <span className="font-bold">Rs.{category.totalAmount.toFixed(2)}</span>
                     </div>
                     <ul className="space-y-1">
                       {category.expenses.map((expense) => (
                         <li key={expense.id} className="flex justify-between text-sm text-muted-foreground">
                           <span>{expense.description}</span>
-                          <span>${expense.amount.toFixed(2)}</span>
+                          <span>Rs.{expense.amount.toFixed(2)}</span>
                         </li>
                       ))}
                     </ul>

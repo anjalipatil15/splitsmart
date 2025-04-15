@@ -44,19 +44,16 @@ export function ExpenseOptimizer({ expenses }: ExpenseOptimizerProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Expense Optimizer (Knapsack Algorithm)</CardTitle>
+        <CardTitle>Expense Optimizer </CardTitle>
         <CardDescription>
-          Find the optimal combination of expenses that add up closest to your target amount without exceeding it
+          Find the optimal combination of expenses that add up closest to your target amount without exceeding it. Use it for coupons,
+          discounts, or any other expense optimizations.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground">
-          This tool uses the Knapsack algorithm to find the optimal combination of expenses that add up closest to your
-          target amount without exceeding it.
-        </p>
 
         <div className="space-y-2">
-          <Label htmlFor="targetAmount">Target Amount ($)</Label>
+          <Label htmlFor="targetAmount">Target Amount (Rs.)</Label>
           <div className="flex gap-2">
             <Input
               id="targetAmount"
@@ -73,15 +70,15 @@ export function ExpenseOptimizer({ expenses }: ExpenseOptimizerProps) {
 
         {optimizedExpenses.length > 0 ? (
           <div className="space-y-2 mt-4">
-            <h3 className="font-medium">Optimized Expense Group: ${totalOptimized.toFixed(2)}</h3>
+            <h3 className="font-medium">Optimized Expense Group: Rs.{totalOptimized.toFixed(2)}</h3>
             <p className="text-sm text-muted-foreground">
-              Target: ${targetAmount.toFixed(2)} | Difference: ${Math.abs(targetAmount - totalOptimized).toFixed(2)}
+              Target: Rs.{targetAmount.toFixed(2)} | Difference: Rs.{Math.abs(targetAmount - totalOptimized).toFixed(2)}
             </p>
             <ul className="space-y-2 mt-4">
               {optimizedExpenses.map((expense) => (
                 <li key={expense.id} className="flex justify-between border-b pb-2">
                   <span>{expense.description}</span>
-                  <span>${expense.amount.toFixed(2)}</span>
+                  <span>Rs.{expense.amount.toFixed(2)}</span>
                 </li>
               ))}
             </ul>
