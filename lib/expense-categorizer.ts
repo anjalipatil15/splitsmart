@@ -10,19 +10,15 @@ export interface ExpenseCategory {
 export function categorizeExpenses(expenses: Expense[], k = 3): ExpenseCategory[] {
   if (expenses.length === 0) return []
   if (expenses.length <= k) {
-    // If we have fewer expenses than categories, each expense gets its own category
+  
     return expenses.map((expense) => ({
       name: expense.description,
       expenses: [expense],
       totalAmount: expense.amount,
     }))
   }
-
-  // Feature extraction: convert expenses to numerical features
-  // For simplicity, we'll just use the amount as the feature
   const features = expenses.map((expense) => expense.amount)
 
-  // Initialize k centroids randomly
   const centroids: number[] = []
   const min = Math.min(...features)
   const max = Math.max(...features)
@@ -31,14 +27,13 @@ export function categorizeExpenses(expenses: Expense[], k = 3): ExpenseCategory[
     centroids.push(min + ((max - min) * i) / (k - 1))
   }
 
-  // Maximum iterations to prevent infinite loops
   const maxIterations = 100
   let iterations = 0
   let previousCentroids: number[] = []
 
-  // Main k-means loop
+
   while (iterations < maxIterations) {
-    // Assign each expense to the nearest centroid
+ 
     const clusters: number[][] = Array(k)
       .fill(null)
       .map(() => [])
@@ -58,25 +53,22 @@ export function categorizeExpenses(expenses: Expense[], k = 3): ExpenseCategory[
       clusters[closestCentroid].push(index)
     })
 
-    // Store current centroids for convergence check
+ 
     previousCentroids = [...centroids]
 
-    // Update centroids based on the mean of each cluster
+
     for (let i = 0; i < k; i++) {
       if (clusters[i].length > 0) {
         const clusterFeatures = clusters[i].map((index) => features[index])
         centroids[i] = clusterFeatures.reduce((sum, val) => sum + val, 0) / clusterFeatures.length
       }
     }
-
-    // Check for convergence
     const hasConverged = centroids.every((centroid, i) => Math.abs(centroid - previousCentroids[i]) < 0.01)
     if (hasConverged) break
 
     iterations++
   }
 
-  // Assign expenses to final clusters
   const finalClusters: Expense[][] = Array(k)
     .fill(null)
     .map(() => [])
@@ -96,11 +88,10 @@ export function categorizeExpenses(expenses: Expense[], k = 3): ExpenseCategory[
     finalClusters[closestCentroid].push(expenses[index])
   })
 
-  // Create category names based on the most common words in the descriptions
   return finalClusters
     .filter((cluster) => cluster.length > 0)
     .map((cluster) => {
-      // Find the most common word in the descriptions
+
       const words = cluster
         .flatMap((expense) => expense.description.toLowerCase().split(/\s+/))
         .filter((word) => word.length > 3)

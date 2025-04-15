@@ -12,7 +12,7 @@ export interface Expense {
   id: string
   description: string
   amount: number
-  payers: PayerContribution[] // Changed from single paidBy to multiple payers
+  payers: PayerContribution[] 
   splitWith: string[]
   date: string
 }

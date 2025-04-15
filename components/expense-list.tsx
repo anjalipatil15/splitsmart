@@ -52,7 +52,7 @@ export function ExpenseList({ expenses, people }: ExpenseListProps) {
                     </p>
                   ) : (
                     <div>
-                      <p>Paid by multiple people (${expense.amount.toFixed(2)}):</p>
+                      <p>Paid by multiple people (Rs.{expense.amount.toFixed(2)}):</p>
                       <ul className="list-disc pl-5 mt-1">
                         {expense.payers.map((payer) => (
                           <li key={payer.payerId}>

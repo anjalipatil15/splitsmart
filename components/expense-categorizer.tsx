@@ -73,7 +73,7 @@ export function ExpenseCategorizer({ expenses }: ExpenseCategorizerProps) {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
-                    <Tooltip formatter={(value) => `$${Number(value).toFixed(2)}`} />
+                    <Tooltip formatter={(value) => `Rs.${Number(value).toFixed(2)}`} />
                     <Legend />
                   </PieChart>
                 </ResponsiveContainer>
